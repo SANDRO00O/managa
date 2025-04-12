@@ -20,7 +20,7 @@ fetch('https://raw.githubusercontent.com/abdlhay/Manga_slayer/07e55c5d3e46e2e97b
   });
 
 // عند الضغط على زر التحميل
-downloadButton.addEventListener('click', function (e) {
+downloadButton.addEventListener('click', function(e) {
   if (!updateUrl) {
     e.preventDefault();
     if (popup) {
