@@ -6,8 +6,10 @@
   /* الألوان الرئيسية */
   --bg-color: #000000;
   --text-color: #fff;
-  --primary-color: #ff4d4d;     /* للشعارات وعند hover للروابط وبعض العناصر */
-  --secondary-color: #ccc;      /* للروابط والنصوص الثانوية */
+  --primary-color: #ff4d4d;
+  /* للشعارات وعند hover للروابط وبعض العناصر */
+  --secondary-color: #ccc;
+  /* للروابط والنصوص الثانوية */
   
   /* الهيدر */
   --header-bg: #0D0D0DC7;
@@ -21,7 +23,8 @@
   --menu-toggle-span-width: 25px;
   --menu-toggle-span-height: 3px;
   --menu-toggle-gap: 4px;
-  --icon-size: 25.89px;          /* يُستخدم للأيقونات مثل .mangasr */
+  --icon-size: 25.89px;
+  /* يُستخدم للأيقونات مثل .mangasr */
   --github-icon-size: 0.925496rem;
   --app-image-max-width: 400px;
   --content-max-width: 600px;
@@ -95,6 +98,7 @@ header {
   height: var(--menu-toggle-span-height);
   background: var(--text-color);
   border-radius: 2px;
+  
   transition: all 0.3s ease;
 }
 
@@ -115,6 +119,8 @@ nav {
   display: flex;
   gap: 1rem;
   transition: all 0.4s ease;
+  backdrop-filter: blur(10px);
+  
 }
 
 nav a {
@@ -133,11 +139,12 @@ nav a:hover {
   .menu-toggle {
     display: flex;
   }
-    
+  
   nav {
+    backdrop-filter: blur(10px);
     display: none;
     flex-direction: column;
-    background-color: #0D0D0D;
+    background-color: #0D0D0DC7;
     position: absolute;
     top: 100%;
     right: 0;
@@ -146,7 +153,7 @@ nav a:hover {
     opacity: 0;
     pointer-events: none;
   }
-    
+  
   nav.active {
     display: flex;
     opacity: 1;
@@ -156,6 +163,7 @@ nav a:hover {
 }
 
 .landing-page {
+  
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -343,12 +351,12 @@ nav a:hover {
   .landing-page {
     flex-direction: row;
   }
-    
+  
   .content {
     order: 1;
     text-align: right;
   }
-    
+  
   .app-image {
     order: 2;
   }
