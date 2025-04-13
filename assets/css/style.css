@@ -119,7 +119,6 @@ nav {
   display: flex;
   gap: 1rem;
   transition: all 0.4s ease;
-  backdrop-filter: blur(10px);
   
 }
 
@@ -141,7 +140,6 @@ nav a:hover {
   }
   
   nav {
-    backdrop-filter: blur(10px);
     display: none;
     flex-direction: column;
     background-color: #0D0D0DC7;
