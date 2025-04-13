@@ -42,7 +42,23 @@
   --popup-height: 50px;
   --popup-margin-bottom: 20px;
   --footer-padding: 1rem;
+  
+  /* زر التحميل*/
+  --button-width: 90%;
+  --button-radius: 8px;
+  --shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  --top-bg: #CC0000;
+  --bottom-bg: #000000;
+  --icon-size: 32px;
+  --badge-font-size: 0.7rem;
+  --badge-padding: 2px 6px;
+  --badge-border-radius: 4px;
+  --top-height: 45px;
+  --bottom-height: 60px;
+  --bottom-font-size: 16px;
+  --bottom-padding: 0px 0;
 }
+
 
 * {
   -webkit-tap-highlight-color: transparent;
@@ -189,32 +205,62 @@ nav a:hover {
   margin-bottom: 2rem;
 }
 
-.download-button {
-  display: inline-flex;
+/*زر التحميل*/
+.android-button {
+  width: var(--button-width);
+  max-width: 100%;
+  border-radius: var(--button-radius);
+  overflow: hidden;
+  font-family: sans-serif;
+  box-shadow: var(--shadow);
+  cursor: pointer;
+  display: inline-block;
+  margin: auto;
+  border: 1.5px solid var(--top-bg);
+}
+
+/* الشريط العلوي */
+.android-button-top {
+  background-color: var(--top-bg);
+  height: var(--top-height);
+  position: relative;
+  display: flex;
+  justify-content: center;
   align-items: center;
-  gap: 0.5rem;
-  background-color: var(--button-bg);
-  color: var(--text-color);
-  padding: 1rem;
-  border-radius: calc(1.5rem / 1.618);
-  font-size: calc(1.5rem / 1.618);
-  text-decoration: none;
-  transition: background 0.3s ease, transform 0.3s ease;
 }
 
-.download-button img {
-  width: 24px;
-  height: 24px;
+/* أيقونة أندرويد */
+.android-icon {
+  width: var(--icon-size);
+  height: var(--icon-size);
 }
 
-.download-button:hover {
-  background-color: var(--button-hover-bg);
-  transform: scale(1.02);
+/* الشارة الصغيرة لـ APK */
+.apk-badge {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  background-color: transparent;
+  color: #ffffff;
+  border: 1px solid #ffffff;
+  border-radius: var(--badge-border-radius);
+  padding: var(--badge-padding);
+  font-size: var(--badge-font-size);
+  font-weight: bold;
+}
+
+/* الشريط السفلي */
+.android-button-bottom {
+  background-color: var(--bottom-bg);
+  color: #ffffff;
+  text-align: center;
+  font-size: 1rem;
+  padding: 10px 0;
 }
 
 .security-note {
   margin-top: 0.5rem;
-  font-size: 0.572rem;
+  font-size: calc(1rem /1.6118);
   color: var(--secondary-color);
 }
 
