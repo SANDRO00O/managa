@@ -221,7 +221,7 @@ nav a:hover {
   transition: .1s ease-in-out;
 }
 
-.android-button:active{
+.android-button:active {
   transform: scale(0.95);
 }
 
