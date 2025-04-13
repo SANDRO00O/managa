@@ -30,4 +30,4 @@ jobs:
           username: animesla
           password: ${{ secrets.FTP_PASSWORD2 }}
           protocol: ftps
-          server-dir: /htdocs/
+          server-dir: /public_html/
