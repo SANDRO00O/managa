@@ -1,3 +1,11 @@
+if (!sessionStorage.getItem("reloaded")) {
+  localStorage.clear();
+  sessionStorage.clear(); // نحذفه قبل التعيين لتأكيد إعادة التهيئة
+  sessionStorage.setItem("reloaded", "true");
+  window.location.reload(true);
+}
+
+// الكود الأصلي يبدأ من هنا
 const popup = document.querySelector('.popup');
 const downloadButton = document.getElementById('download');
 const images = document.querySelectorAll('.screenshot');
@@ -24,9 +32,9 @@ downloadButton.addEventListener('click', function(e) {
   if (!updateUrl) {
     e.preventDefault();
     if (popup) {
-      popup.classList.add('show'); // إظهار مع تأثير fade
+      popup.classList.add('show');
       setTimeout(() => {
-        popup.classList.remove('show'); // إخفاء بعد 3 ثواني
+        popup.classList.remove('show');
       }, 3000);
     }
   } else {
