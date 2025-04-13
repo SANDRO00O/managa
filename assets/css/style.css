@@ -217,6 +217,12 @@ nav a:hover {
   display: inline-block;
   margin: auto;
   border: 1.5px solid var(--top-bg);
+  user-select: none;
+  transition: .1s ease-in-out;
+}
+
+.android-button:active{
+  transform: scale(0.95);
 }
 
 /* الشريط العلوي */
@@ -368,8 +374,8 @@ nav a:hover {
   justify-content: center;
   align-items: center;
   display: flex;
-  width: var(--popup-dimensions);
-  height: var(--popup-height);
+  padding: 5px 0;
+  width: 70%;
   background-color: var(--header-bg);
   left: 50%;
   transform: translateX(-50%);
@@ -378,6 +384,7 @@ nav a:hover {
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.3s ease;
+  font-size: 0.9rem;
 }
 
 .popup.show {
@@ -387,7 +394,6 @@ nav a:hover {
 
 .popup h1 {
   color: var(--primary-color);
-  font-size: 1rem;
 }
 
 @media (min-width: 768px) {
