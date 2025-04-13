@@ -1,55 +1,78 @@
-if (!sessionStorage.getItem("reloaded")) {
-  localStorage.clear();
-  sessionStorage.clear(); // نحذفه قبل التعيين لتأكيد إعادة التهيئة
-  sessionStorage.setItem("reloaded", "true");
-  window.location.reload(true);
-}
-
-// الكود الأصلي يبدأ من هنا
+// الكود يبدأ من هنا
 const popup = document.querySelector('.popup');
 const downloadButton = document.getElementById('download');
 const images = document.querySelectorAll('.screenshot');
 
 let current = 0;
 let updateUrl = null;
+let isLoading = false;
+
+// عرض رسالة في البوب أب
+function showPopup(message, duration = 3000) {
+  if (!popup) return;
+  popup.textContent = message;
+  popup.classList.add('show');
+  setTimeout(() => {
+    popup.classList.remove('show');
+  }, duration);
+}
 
 // تحميل رابط التحديث
 fetch('https://raw.githubusercontent.com/abdlhay/Manga_slayer/07e55c5d3e46e2e97bd4d42b563e341a6e43ec12/update.json')
-  .then(response => response.json())
+  .then(response => {
+    if (!response.ok) throw new Error('فشل تحميل الملف');
+    return response.json();
+  })
   .then(data => {
-    if (data && data.update_url) {
+    if (data && typeof data.update_url === 'string' && data.update_url.startsWith('http')) {
       updateUrl = data.update_url;
     } else {
-      console.error('رابط التحميل غير موجود في ملف JSON');
+      console.error('رابط التحميل غير صالح أو غير موجود في JSON');
     }
   })
   .catch(err => {
     console.error('خطأ في تحميل ملف update.json:', err);
+    showPopup('حدث خطأ أثناء التحقق من وجود التحديث');
   });
 
 // عند الضغط على زر التحميل
-downloadButton.addEventListener('click', function(e) {
-  if (!updateUrl) {
-    e.preventDefault();
-    if (popup) {
-      popup.classList.add('show');
-      setTimeout(() => {
-        popup.classList.remove('show');
-      }, 3000);
+if (downloadButton) {
+  downloadButton.addEventListener('click', function(e) {
+    if (isLoading) {
+      e.preventDefault();
+      return;
     }
-  } else {
-    downloadButton.href = updateUrl;
-  }
-});
-
-function showNextImage() {
-  images[current].classList.remove('active');
-  current = (current + 1) % images.length;
-  images[current].classList.add('active');
+    
+    if (!updateUrl || !updateUrl.startsWith('http')) {
+      e.preventDefault();
+      showPopup('رابط التحميل غير متاح حالياً أو غير صالح');
+      return;
+    }
+    
+    isLoading = true;
+    
+    // إذا كان الزر <a> استخدم href، وإذا كان <button> استخدم redirect
+    if (downloadButton.tagName.toLowerCase() === 'a') {
+      downloadButton.setAttribute('href', updateUrl);
+    } else {
+      window.location.href = updateUrl;
+    }
+    
+    setTimeout(() => { isLoading = false }, 3000);
+  });
 }
 
-setInterval(showNextImage, 3000);
+// عرض الصور بالتناوب
+if (images.length > 0) {
+  images[0].classList.add('active');
+  setInterval(() => {
+    images[current].classList.remove('active');
+    current = (current + 1) % images.length;
+    images[current].classList.add('active');
+  }, 3000);
+}
 
+// تبديل القائمة
 function toggleMenu(el) {
   document.getElementById('nav').classList.toggle('active');
   el.classList.toggle('active');
