@@ -61,6 +61,7 @@
 
 
 * {
+  direction: rtl;
   -webkit-tap-highlight-color: transparent;
   margin: 0;
   padding: 0;
@@ -445,4 +446,26 @@ footer {
 
 footer p {
   font-size: 0.9rem;
+}
+
+.attribution {
+    direction: ltr;
+
+  font-weight: bold;
+  color: var(--color-two);
+  font-size: 3.5vw;
+}
+
+.attribution i.fa-heart {
+  color: red;
+  font-size: 3vw;
+}
+
+.attribution i.fa-code {
+  color: var(--color-two);
+  font-size: 3vw;
+}
+
+::selection {
+  background-color: #FF4D4D45;
 }
