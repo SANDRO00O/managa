@@ -13,9 +13,9 @@ This project provides a simple landing page for downloading the Manga Slayer app
 
 ## Installation
 
-You can download the Manga Slayer APK file for Android from the official release page:
+You can download the Manga Slayer APK file for Android from the website:
 
-- [Download Manga Slayer APK](https://github.com/abdlhay/Manga_slayer/releases)
+- [Download Manga Slayer APK](https://animeslayer.rf.gd)
 
 ## How to Use
 
