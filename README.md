@@ -41,7 +41,7 @@ You can download the Manga Slayer APK file for Android from the official release
 
 ## Contributing
 
-Feel free to fork this repository, make changes, and submit pull requests.
+Feel free to fork this repository, and submit pull requests.
 
 ## License
 
@@ -51,6 +51,11 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 - **Manga Slayer Team** for the app development.
 - **GitHub** for hosting the code repository.
+
+## NOTE
+
+THIS WEBSITE IS AN UNOFFICIAL LANDING PAGE FOR DOWNLOADING THE MANGA SLAYER APP.
+THE APP IS NOT OWNED OR DEVELOPED BY THE OUTHOR OF THIS WEBSITE.
 
 ## Contact
 
