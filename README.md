@@ -71,10 +71,16 @@ THE APP IS NOT OWNED OR DEVELOPED BY THE AUTHOR OF THIS WEBSITE.
 
 ## Contact  
 
-For further inquiries, you can reach out to the Manga Slayer Team or follow the repository's updates via GitHub.  
+For further inquiries, you can reach out to the Manga Slayer Team or follow the repository's updates via GitHub:
 
-- **GitHub**: [https://github.com/abdlhay/Manga_slayer](https://github.com/abdlhay/Manga_slayer)  
+- **GitHub**: [https://github.com/abdlhay/Manga_slayer](https://github.com/abdlhay/Manga_slayer)
+
+And if you wnat to contact with me:
+
+- **Instagram**: []()
+- **Telegram**: [https://t.me/kaarrar](https://t.me/kaarrar)
+- **Email**: titanstudio.iq@gmail.com
 
 ---  
 
-With 💙 by Karrar©
+**Made with 💙 by Karrar©**
