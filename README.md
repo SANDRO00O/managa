@@ -77,7 +77,6 @@ For further inquiries, you can reach out to the Manga Slayer Team or follow the 
 
 And if you wnat to contact with me:
 
-- **Instagram**: []()
 - **Telegram**: [https://t.me/kaarrar](https://t.me/kaarrar)
 - **Email**: titanstudio.iq@gmail.com
 
