@@ -27,7 +27,7 @@ jobs:
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
           server: ftp.animeslayer.online
-          username: animesla
+          username: github@animeslayer.online
           password: ${{ secrets.FTP_PASSWORD2 }}
           protocol: ftps
           server-dir: /public_html/
