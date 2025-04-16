@@ -19,21 +19,62 @@ function showPopup(message, duration = 5000) {
 }
 
 // تحميل رابط التحديث من GitHub
-fetch('https://raw.githubusercontent.com/abdlhay/Manga_slayer/07e55c5d3e46e2e97bd4d42b563e341a6e43ec12/update.json')
+// تحميل رابط التحديث من GitHub
+// تحميل رابط التحديث من GitHub
+fetch('https://api.github.com/repos/abdlhay/Manga_slayer/releases', {
+  headers: {
+    'Accept': 'application/vnd.github.v3+json',
+    'User-Agent': 'MangaSlayerApp/1.0' // يجب تحديث هذا الجزء
+  }
+})
   .then(response => {
-    if (!response.ok) throw new Error('فشل تحميل الملف');
+    console.log('استجابة GitHub API:', response);
+    if (!response.ok) {
+      throw new Error(`خطأ في API: ${response.status} ${response.statusText}`);
+    }
     return response.json();
   })
-  .then(data => {
-    if (data && typeof data.update_url === 'string' && data.update_url.startsWith('http')) {
-      updateUrl = data.update_url;
-    } else {
-      console.error('رابط التحميل غير صالح أو غير موجود في JSON');
+  .then(releases => {
+    console.log('الإصدارات المستلمة:', releases);
+    
+    if (!Array.isArray(releases)) {
+      throw new Error('تنسيق الإصدارات غير صحيح');
     }
+    
+    if (releases.length === 0) {
+      throw new Error('لا يوجد إصدارات متاحة');
+    }
+    
+    const latestRelease = releases.find(r => !r.prerelease && !r.draft);
+    
+    if (!latestRelease) {
+      throw new Error('لم يتم العثور على إصدار مستقر');
+    }
+    
+    const apkAsset = latestRelease.assets.find(asset => 
+      asset.name.match(/Manga_slayer.*\.apk$/i) // تحسين البحث بال Regex
+    );
+    
+    console.log('الملف المرفق المحدد:', apkAsset);
+    
+    if (!apkAsset) {
+      throw new Error('لم يتم العثور على ملف APK في آخر إصدار');
+    }
+    
+    if (!apkAsset.browser_download_url.startsWith('http')) {
+      throw new Error('رابط التحميل غير آمن');
+    }
+    
+    updateUrl = apkAsset.browser_download_url;
+    console.log('تم تحديث رابط التحميل بنجاح:', updateUrl);
   })
   .catch(err => {
-    console.error('خطأ في تحميل ملف update.json:', err);
-    showPopup('حدث خطأ أثناء التحقق من وجود التحديث');
+    console.error('خطأ تفصيلي:', {
+      message: err.message,
+      stack: err.stack,
+      name: err.name
+    });
+    showPopup('حدث خطأ أثناء جلب التحديث: ' + err.message);
   });
 
 // عند الضغط على زر التحميل
