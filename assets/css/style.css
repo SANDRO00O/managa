@@ -73,11 +73,27 @@
 body {
   background-color: var(--bg-color);
   color: var(--text-color);
+  position: relative;
+}
+
+body::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(180deg,
+      rgba(0, 0, 0, 0.9) 0%,
+      rgba(0, 0, 0, 0.6) 50%,
+      rgba(0, 0, 0, 0.9) 100%);
+  z-index: 0;
+  pointer-events: none;
 }
 
 header {
   backdrop-filter: blur(10px);
-  background-color: var(--header-bg);
+  background-color: rgba(13, 13, 13, 0.8);
   border-bottom: 2px solid var(--header-border);
   padding: var(--header-padding);
   display: flex;
@@ -87,6 +103,7 @@ header {
   top: 0;
   z-index: 1000;
   animation: slideDown var(--animation-slideDown) ease;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.5);
 }
 
 .logo {
@@ -115,7 +132,6 @@ header {
   height: var(--menu-toggle-span-height);
   background: var(--text-color);
   border-radius: 2px;
-  
   transition: all 0.3s ease;
 }
 
@@ -136,7 +152,6 @@ nav {
   display: flex;
   gap: 1rem;
   transition: all 0.4s ease;
-  
 }
 
 nav a {
@@ -186,6 +201,9 @@ nav a:hover {
   padding: 5vw;
   gap: var(--landing-page-gap);
   animation: fadeIn var(--animation-landing-page) ease-in-out;
+  position: relative;
+  z-index: 1;
+  margin-top: calc(140px / 1.618);
 }
 
 .content {
@@ -206,14 +224,13 @@ nav a:hover {
   margin-bottom: 2rem;
 }
 
-/*زر التحميل*/
+/* زر التحميل */
 .android-button {
   width: var(--button-width);
   max-width: 100%;
   border-radius: var(--button-radius);
   overflow: hidden;
   font-family: sans-serif;
-  box-shadow: var(--shadow);
   cursor: pointer;
   display: inline-block;
   margin: auto;
@@ -290,6 +307,49 @@ nav a:hover {
   position: relative;
 }
 
+/* تأثيرات غلاف المانجا */
+.manga-covers {
+  position: absolute;
+  overflow: hidden;
+  padding: 2rem 0;
+  width: 100%;
+  z-index: 0;
+}
+
+.covers-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.covers-row {
+  display: flex;
+  gap: 1rem;
+  width: max-content;
+}
+
+.covers-row img {
+  width: 100px;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.fade-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background:
+    linear-gradient(0deg, var(--bg-color) 10%, transparent 50%),
+    /* تلاشي قوي من الأسفل فقط */
+    linear-gradient(90deg, var(--bg-color) 5%, transparent 20%, transparent 85%, var(--bg-color) 95%);
+    /* تلاشي خفيف من الجانبين */
+  pointer-events: none;
+}
+
 .screenshot-container {
   position: relative;
   width: 100%;
@@ -317,8 +377,10 @@ nav a:hover {
 
 .features-section {
   padding: var(--features-section-padding);
-  background-color: var(--bg-color);
+  background-color: transparent;
   text-align: center;
+  position: relative;
+  z-index: 1;
 }
 
 .section-title {
@@ -334,11 +396,13 @@ nav a:hover {
 }
 
 .feature-item {
-  background-color: var(--header-bg);
+  background-color: rgba(13, 13, 13, 0.8);
+  backdrop-filter: blur(5px);
   padding: 1.5rem;
   border-radius: 15px;
   border: 1px solid #222;
   transition: transform 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
 }
 
 .feature-item:hover {
@@ -437,33 +501,32 @@ nav a:hover {
 }
 
 footer {
-  background-color: #0D0D0D;
+  background-color: rgba(13, 13, 13, 0.8);
   color: var(--secondary-color);
   text-align: center;
   padding: var(--footer-padding);
   margin-top: 3rem;
+  position: relative;
+  z-index: 1;
 }
 
-footer p {
+footer p,
+footer h1 {
   font-size: 0.9rem;
 }
 
 .attribution {
-    direction: ltr;
-
+  direction: ltr;
   font-weight: bold;
   color: var(--color-two);
-  font-size: 3.5vw;
 }
 
 .attribution i.fa-heart {
   color: red;
-  font-size: 3vw;
 }
 
 .attribution i.fa-code {
   color: var(--color-two);
-  font-size: 3vw;
 }
 
 ::selection {
