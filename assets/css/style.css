@@ -346,7 +346,7 @@ nav a:hover {
     linear-gradient(0deg, var(--bg-color) 10%, transparent 50%),
     /* تلاشي قوي من الأسفل فقط */
     linear-gradient(90deg, var(--bg-color) 5%, transparent 20%, transparent 85%, var(--bg-color) 95%);
-    /* تلاشي خفيف من الجانبين */
+  /* تلاشي خفيف من الجانبين */
   pointer-events: none;
 }
 
@@ -354,20 +354,21 @@ nav a:hover {
   position: relative;
   width: 100%;
   overflow: hidden;
-}
-
-.screenshot {
   background-image: url("/assets/images/image-mesh-gradient.webp");
   background-size: cover;
   background-repeat: no-repeat;
   width: 100%;
   border-radius: 1rem;
   border: 2px solid #0D0D0D;
+}
+
+.screenshot {
+  width: 100%;
   position: absolute;
   top: 0;
   left: 0;
   opacity: 0;
-  transition: opacity 1s ease-in-out;
+  transition: opacity 1s ease;
 }
 
 .screenshot.active {
