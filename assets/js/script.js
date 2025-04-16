@@ -50,6 +50,7 @@ if (downloadButton) {
     
     if (!updateUrl || !updateUrl.startsWith('http')) {
       e.preventDefault();
+      showMaintenancePage(); 
       showPopup('رابط التحميل غير متاح حالياً أو غير صالح');
       return;
     }
@@ -68,6 +69,15 @@ if (downloadButton) {
       isLoading = false;
     }, 3000);
   });
+}
+
+function showMaintenancePage() {
+  document.body.innerHTML = `
+    <div class="maintenance-container">
+      <h1>الموقع تحت الصيانة</h1>
+      <p>نأسف على الإزعاج، الموقع في طور التحديث. يرجى المحاولة لاحقًا.</p>
+    </div>
+  `
 }
 
 // عرض الصور بالتناوب
@@ -262,19 +272,6 @@ function stopAnimation() {
     animationId = null;
     isAnimating = false;
   }
-}
-
-// عرض رسالة الخطأ
-function showError(title, message) {
-  console.error(`${title}: ${message}`);
-  // يمكن استبدال هذا بتنفيذ عرض رسالة للمستخدم
-  const errorElement = document.createElement('div');
-  errorElement.className = 'error-message';
-  errorElement.innerHTML = `
-    <h3>${title}</h3>
-    <p>${message}</p>
-  `;
-  document.body.prepend(errorElement);
 }
 
 // إدارة أحداث الصفحة
