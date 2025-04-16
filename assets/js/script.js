@@ -9,7 +9,7 @@ let lastDownloadTime = 0;
 const cooldownPeriod = 10000; // 10 ثوانٍ
 
 // عرض رسالة في البوب أب
-function showPopup(message, duration = 3000) {
+function showPopup(message, duration = 5000) {
   if (!popup) return;
   popup.textContent = message;
   popup.classList.add('show');
@@ -133,7 +133,7 @@ async function loadMangaCovers() {
     
   } catch (error) {
     console.error('حدث خطأ أثناء تحميل الأغلفة:', error);
-    showError('تعذر تحميل صور الأغلفة', error.message);
+    showPopup('الرجاء اعادة تحميل الصفحة!');
   }
 }
 
